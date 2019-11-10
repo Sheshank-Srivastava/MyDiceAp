@@ -5,8 +5,4 @@ Learn From Udemy course Link: https://www.udemy.com/course/java-android-complete
 
 The above mention course constantly gets updated and easy to under-stand.
 
-<<<<<<< HEAD
 <img src="https://github.com/Sheshank-Srivastava/MyDiceAp/blob/master/screenshot/app1.jpeg" width="200" height="400">
-=======
-
->>>>>>> 92b6299698f7e287edcadff36def2db493ea3094
