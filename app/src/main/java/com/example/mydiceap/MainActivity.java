@@ -72,9 +72,11 @@ public class MainActivity extends AppCompatActivity {
                 //Comparing integer variable to check equality
                 String win = mRandomNumber1 == mRandomNumber2 ? "You Wing the Match" : "Better Luck nextTime";
 
-                mp.start();
                 //Toast string on the result status
                 showToast(win);
+
+                mp.start();
+
                 Animation shake = AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake);
                 imgDiceOne.startAnimation(shake);
                 imgDiceTwo.startAnimation(shake);
@@ -83,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                   @Override
                   public void run() {
                       stopAnimation(shake);
-
                   }
               },200);
 
