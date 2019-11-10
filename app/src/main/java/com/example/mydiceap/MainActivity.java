@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Application;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
    static  int i=1;
+   MediaPlayer mp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar mAppBar =  findViewById(R.id.tool_MainBar);
         mAppBar.setTitle("Dice Game");
         mAppBar.setTitleTextColor(getResources().getColor(R.color.white));
+
+        playsound();
         btnRollDice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,10 +72,33 @@ public class MainActivity extends AppCompatActivity {
                 //Comparing integer variable to check equality
                 String win = mRandomNumber1 == mRandomNumber2 ? "You Wing the Match" : "Better Luck nextTime";
 
+                mp.start();
                 //Toast string on the result status
                 showToast(win);
+                Animation shake = AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake);
+                imgDiceOne.startAnimation(shake);
+                imgDiceTwo.startAnimation(shake);
+
+              new Handler().postDelayed(new Runnable() {
+                  @Override
+                  public void run() {
+                      stopAnimation(shake);
+
+                  }
+              },200);
+
+
             }
         });
+
+    }
+
+    private void stopAnimation(Animation shake) {
+     shake.cancel();
+    }
+
+    private void playsound() {
+         mp = MediaPlayer.create(this,R.raw.dice_sound);
 
     }
 
